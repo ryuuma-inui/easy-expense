@@ -1,0 +1,3 @@
+<% flash.each do |expense_type, expense| %>
+  <div class="alert alert-<%= expense_type %>"><%= expense %></div>
+<% end %>

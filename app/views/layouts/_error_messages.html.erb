@@ -1,0 +1,9 @@
+<% if expense.errors.any? %>
+  <div id="error_explanation" class="alert alert-warning">
+    <ul class="mb-0">
+      <% expense.errors.full_messages.each do |expense| %>
+        <li><%= expense %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
