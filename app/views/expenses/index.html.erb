@@ -1,2 +1,29 @@
-<h1>Expenses#index</h1>
-<p>Find me in app/views/expenses/index.html.erb</p>
+<h1>家計簿一覧</h1>
+
+<% if @expenses.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>日付</th>
+        <th>金額</th>
+        <th>用途（備考）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @expenses.each do |expense| %>
+        <tr>
+          <td><%= link_to expense.id, expense %></td>
+          <td><%= expense.date %></td>
+          <td><%= expense.price %></td>
+          <td><%= expense.memo %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= paginate @expenses %>
+  </div>
+<% end %>
+
+<%= link_to '新規家計簿の登録', new_expense_path, class: "btn btn-primary" %>

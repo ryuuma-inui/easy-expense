@@ -1,2 +1,4 @@
-<h1>Expenses#new</h1>
-<p>Find me in app/views/expenses/new.html.erb</p>
+<h1>家計簿新規作成ページ</h1>
+
+<%= render 'form', expense: @expense %>
+<%= link_to '一覧に戻る', expenses_path %>

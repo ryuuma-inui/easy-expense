@@ -1,2 +1,4 @@
-<h1>Expenses#edit</h1>
-<p>Find me in app/views/expenses/edit.html.erb</p>
+<h1>id: <%= @expense.id %> の家計簿編集ページ</h1>
+
+<%= render 'form', expense: @expense %>
+<%= link_to '一覧に戻る', expenses_path %>

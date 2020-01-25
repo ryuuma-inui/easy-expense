@@ -1,2 +1,24 @@
-<h1>Expenses#show</h1>
-<p>Find me in app/views/expenses/show.html.erb</p>
+<h1>id: <%= @expense.id %>の家計簿詳細ページ</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>id</th>
+    <td><%= @expense.id %></td>
+  </tr>
+  <tr>
+    <th>日付</th>
+    <td><%= @expense.date %></td>
+  </tr>
+  <tr>
+    <th>金額</th>
+    <td><%= @expense.price %></td>
+  </tr>
+   <tr>
+    <th>用途（備考）</th>
+    <td><%= @expense.memo %></td>
+  </tr>
+</table>
+
+<%= link_to '一覧に戻る', expenses_path %>
+<%= link_to 'この家計簿を編集する', edit_expense_path(@expense), class: 'btn btn-light' %>
+<%= link_to 'この家計簿を削除する', @expense, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>

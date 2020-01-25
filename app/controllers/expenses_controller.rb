@@ -50,7 +50,9 @@ class ExpensesController < ApplicationController
 
   # Strong Parameter
   def expense_params
-    params.require(:expense).permit(:memo, :date, :price)
+    params
+    .require(:expense)
+    .permit(:memo, :date, :price)
   end
   
   def correct_user
