@@ -14,14 +14,21 @@ class ExpensesController < ApplicationController
   end
 
   def create
+    unless Date.valid_date?(expense_params['date(1i)'].to_i,expense_params['date(2i)'].to_i,expense_params['date(3i)'].to_i)
+      @expense = Expense.new
+      flash.now[:danger] = '家計簿が登録されませんでした'
+      render :new
+      return
+    end
+    
     @expense = current_user.expenses.build(expense_params)
     
     if @expense.save
-      flash[:success] = '家計簿が正常に投稿されました'
+      flash[:success] = '家計簿が正常に登録されました'
       redirect_to root_url
     else
       @expenses = current_user.expenses.order(id: :desc).page(params[:page])
-      flash.now[:danger] = '家計簿が投稿されませんでした'
+      flash.now[:danger] = '家計簿が登録されませんでした'
       render :new 
     end
   end
